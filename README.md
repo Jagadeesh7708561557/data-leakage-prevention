@@ -1,31 +1,45 @@
 # data-leakage-prevention
 Fall Semester 2021-22 Project for VIT College
-Modules of the Project
-MainPage:
+
+## Modules of the Project
+
+### MainPage:
 Main page or welcome page is the first module of the project which gets the input from the 
 user whether he/she wants encrypt or decrypt the file.
-ToBeEncryptedOrDecrypted:
+
+### ToBeEncryptedOrDecrypted:
 Action java file which implements from the user choice to decrypt or encrypt the file.
-FileEncryptor:
+
+### FileEncryptor:
 Java executable file to encrypt the file.
-FileDecryptor:
+
+### FileDecryptor:
 Java executable file to decrypt the file.
-FileChooser:
+
+### FileChooser:
 This module initiates the process of selecting any files of user choice for encryption or 
 decryption.
-PasswordTakerForEncryption:
+
+### PasswordTakerForEncryption:
 A password security to be provided by the file owner before the encryption process.
-PasswordTakerForDecryption:
+
+### PasswordTakerForDecryption:
 Using hashing algorithm of SHA-512 for password security authentication to go for the 
 decryption process.
-SourceFileNotDeletedDuringEncryption:
+
+### SourceFileNotDeletedDuringEncryption:
 Checking module, If the selected file is present or not in the selected location for 
 encryption.
-SourceFileNotDeletedDuringDecryption:
+
+### SourceFileNotDeletedDuringDecryption:
 Checking module, If the selected file is present or not in the selected location for 
 decryption
-Algorithms
-MODIFICATIONS IN VIGENERE CIPHER
+
+## Algorithms
+
+
+### MODIFICATIONS IN VIGENERE CIPHER
+
 The primary weakness of the Vigenère cipher is the repeating nature of its key, so if the 
 period of key is greater than plaintext we can increase the security of Vigenere cipher. To 
 increase the period of key the length of Vigenere key needs to be enlarged. If we choose a 
@@ -98,3 +112,39 @@ modified the Vigenere table into a 256X256 matrix and named it as a comprehensiv
 Vigenere table with 128 ASCII and 128 Extended ASCII characters. If we assume that the 
 length of the key is 256 characters and without repetition of any characters, then there will 
 be 256! Hence brute force attack is not possible
+
+### SHA-512 Hashing Algorithm
+SHA-512 is just one of several algorithms in the Secure Hashing Algorithm (SHA) family. 
+In 2001, SHA-512 was published by the National Institute of Standards and Technology 
+(NIST) as a U.S. Federal Information Processing Standard (FIPS). Before we look at the 
+specifics of how SHA-512 is used today, let’s briefly cover the history of these algorithms.
+
+SHA-512, or Secure Hash Algorithm 512, is a hashing algorithm used to convert text of 
+any length into a fixed-size string. Each output produces a SHA-512 length of 512 bits (64 
+bytes).
+Pseudocode
+SHA-512 is identical in structure to SHA-256, but:
+• the message is broken into 1024-bit chunks,
+• the initial hash values and round constants are extended to 64 bits,
+• there are 80 rounds instead of 64,
+• the message schedule array has 80 – 64-bit words instead of 64 – 32-bit words,
+• to extend the message schedule array w, the loop is from 16 to 79 instead of from 16 
+to 63,
+• the round constants are based on the first 80 primes 2..409,
+• the word size used for calculations is 64 bits long,
+• the appended length of the message (before pre-processing), in bits, is a 128-bit bigendian integer, and
+• the shift and rotate amounts used are different
+
+Also, SHA-512/t is identical to SHA-512 except that:
+• the initial hash values h0 through h7 are given by the SHA-512/t IV generation 
+function,
+• the output is constructed by truncating the concatenation of h0 through h7 at t bits,
+• t equal to 384 is not allowed, instead SHA-384 should be used as specified, and
+• t values 224 and 256 are especially mentioned as approved.
+The SHA-512/t IV generation function evaluates a modified SHA-512 on the ASCII string 
+"SHA-512/t", substituted with the decimal representation of t. The modified SHA-512 is 
+the same as SHA-512 except its initial values h0 through h7 have each been XORed with 
+the hexadecimal constant 0xa5a5a5a5a5a5a5a
+So, for security verification to decrypt the data we using SHA-512 Hashing algorithm here. 
+During encryption, when the password is entered, its corresponding hash is created using 
+a hash function
